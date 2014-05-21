@@ -1,0 +1,23 @@
+{
+  "name": "Connery",
+  "version": "0.0.1",
+  "private": true,
+  "author": {
+    "name": "Otter",
+    "email": "otc@otterthecat.com"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon": "*",
+    "sinon-chai": "*",
+    "gulp-mocha": "~0.4.1",
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.6.2",
+    "gulp-jshint": "~1.4.0",
+    "jshint-stylish": "~0.1.5",
+    "gulp-jscs": "~0.3.0",
+    "gulp-istanbul": "~0.1.0",
+    "gulp-plato": "~0.1.1"
+  }
+}
