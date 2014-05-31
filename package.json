@@ -6,6 +6,9 @@
     "name": "Otter",
     "email": "otc@otterthecat.com"
   },
+  "scripts": {
+    "test": "mocha"
+  },
   "devDependencies": {
     "mocha": "*",
     "chai": "*",
