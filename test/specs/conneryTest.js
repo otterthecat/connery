@@ -1,10 +1,21 @@
 // assertion library
 // /////////////////////////////////////////////////////////
 var chai = require('chai').should();
+var sinon = require('sinon');
 
 // stubs
 // /////////////////////////////////////////////////////////
+var request = {
+	headers: {
+		'user-agent': "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0"
+	}
+};
 
+var response = {
+	locals: {}
+};
+
+var next = sinon.spy();
 
 // modules to test
 // /////////////////////////////////////////////////////////
@@ -14,12 +25,26 @@ describe('connery', function(){
 
 	describe('#connery()', function(){
 
-		it('should detect Firefox from request', function(){
-			false.should.equal(true);
+		connery(request, response, next);
+
+		it('should apply browser name to response.locals.browser', function(){
+
+			response.locals.connery.browser.name.should.equal('firefox');
+		});
+
+		it('should apply browser version to response.locals.browser', function(){
+
+			response.locals.connery.browser.version.should.equal(24);
 		});
 
 		it('should detect OS from request', function(){
-			flase.should.equal(true);
+
+			response.locals.os = 'linux';
+		});
+
+		it('should call passed next function', function(){
+
+			next.called.should.equal(true);
 		});
 	});
 });
