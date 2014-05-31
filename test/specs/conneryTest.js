@@ -5,27 +5,36 @@ var sinon = require('sinon');
 
 // stubs
 // /////////////////////////////////////////////////////////
-var request = {
+var validRequest = {
 	headers: {
 		'user-agent': "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0"
 	}
 };
 
-var response = {
-	locals: {}
+var invalidRequest = {
+	headers: {
+		'user-agent': ''
+	}
 };
 
-var next = sinon.spy();
+var response, next;
 
 // modules to test
 // /////////////////////////////////////////////////////////
 var connery = require('../../lib/connery');
 
-describe('connery', function(){
+describe('connery()', function(){
 
-	describe('#connery()', function(){
+	describe('connery with known user agent', function(){
 
-		connery(request, response, next);
+		before(function(){
+
+			response = {
+				locals: {}
+			};
+			next = sinon.spy();
+			connery(validRequest, response, next);
+		});
 
 		it('should apply browser name to response.locals.browser', function(){
 
@@ -44,7 +53,30 @@ describe('connery', function(){
 
 		it('should call passed next function', function(){
 
-			next.called.should.equal(true);
+			next.calledOnce.should.equal(true);
+		});
+	});
+
+	describe('connery with unknown user agent', function(){
+
+		before(function(){
+
+			response = {
+				locals: {}
+			};
+			next = sinon.spy();
+			connery(invalidRequest, response, next);
+		});
+
+		it('should return string value "unknown" to browser name & version', function(){
+
+			response.locals.connery.browser.name.should.equal('unknown');
+			response.locals.connery.browser.version.should.equal('unknown');
+		});
+
+		it('should call passed next funcion', function(){
+
+			next.calledOnce.should.equal(true);
 		});
 	});
 });
