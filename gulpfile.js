@@ -15,7 +15,7 @@ var istanbul = require('gulp-istanbul');
 var plato = require('gulp-plato');
 
 
-var sources = ['index.js', './lib/*.js'];
+var sources = ['index.js', './lib/*.js', 'gulpfile.js'];
 
 gulp.task('lint', function(){
 
@@ -26,7 +26,7 @@ gulp.task('lint', function(){
 
 gulp.task('format', function(){
     gulp.src(sources)
-        .pipe(jscs())
+        .pipe(jscs());
 });
 
 
