@@ -1,2 +1,2 @@
 # Connery JS
-Agent sniffing middleware.
+Agent sniffing middleware for common systems & browsers.
