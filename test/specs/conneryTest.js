@@ -1,6 +1,7 @@
 // assertion library
 // /////////////////////////////////////////////////////////
-var chai = require('chai').should();
+var chai = require('chai');
+chai.should();
 var sinon = require('sinon');
 
 // stubs
@@ -48,7 +49,7 @@ describe('connery()', function(){
 
 		it('should detect OS from request', function(){
 
-			response.locals.os = 'linux';
+			response.locals.connery.os.should.equal('linux');
 		});
 
 		it('should call passed next function', function(){
@@ -74,7 +75,7 @@ describe('connery()', function(){
 			response.locals.connery.browser.version.should.equal('unknown');
 		});
 
-		it('should call passed next funcion', function(){
+		it('should call passed next function', function(){
 
 			next.calledOnce.should.equal(true);
 		});
