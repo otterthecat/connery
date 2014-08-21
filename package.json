@@ -1,6 +1,6 @@
 {
   "name": "Connery",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "author": {
     "name": "Otter",
@@ -16,7 +16,7 @@
     "sinon-chai": "*",
     "gulp-mocha": "~0.4.1",
     "gulp-util": "~2.2.14",
-    "gulp": "~3.6.2",
+    "gulp": "~3.8.6",
     "gulp-jshint": "~1.4.0",
     "jshint-stylish": "~0.1.5",
     "gulp-jscs": "~0.3.0",
